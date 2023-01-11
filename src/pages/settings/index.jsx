@@ -3,6 +3,7 @@ import ApplicationSettings from "../../app-settings/ApplicationSettings"
 import { Link } from 'react-router-dom'
 import { imageStorePull } from '../../models/image-store'
 import './styles.css'
+import { Helmet } from 'react-helmet'
 let search = ApplicationSettings.search
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -54,8 +55,11 @@ const handleChangeButton = (e) => {
 }
 
 
-export const Settings = () => (
-  <div className={'backgroundSettings '+pattern}>
+export const Settings = () => (<>
+  <Helmet>
+    <title>Settings</title>
+  </Helmet>
+  <div className={'backgroundSettings ' + pattern}>
     <a href="/" className='headerContainer'><p className={'headerText'} >←</p></a>
     {ApplicationSettings.widgetList.map((widget, i) => (
       getElement(widget, i)
@@ -65,4 +69,5 @@ export const Settings = () => (
       <input className='inputWindow' type="text" onInput={filterFunction} placeholder={'enter new search tag'} onChange={e => { onChangeSearchFunction(e) }} />
     </div>
   </div>
+</>
 )
