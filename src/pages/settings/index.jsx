@@ -16,7 +16,7 @@ const getElement = (name, i) => {
     }
   })
   return <div className={'buttonAll chooseButtons'+i+(value === true ? ' active' : ' passive')}  key={name + '-check'} id={name+i} onClick={handleChangeButton}>
-    <p id={name+'p'} className="buttonText">{name + (value === true ? ' ON' : ' OFF')}</p>
+    <p id={name+'p'} className="buttonText">{(name.replace('Module', '')) + (value === true ? ' ON' : ' OFF')}</p>
   </div>
 
 }
@@ -62,7 +62,7 @@ export const Settings = () => (
     ))}
     <div className='inputPanel'>
       <p id='inputDescription'>{'Choosen: ' + search}</p>
-      <input className='inputWindow' type="text" onInput={filterFunction} placeholder={'введите новую тему'} onChange={e => { onChangeSearchFunction(e) }} />
+      <input className='inputWindow' type="text" onInput={filterFunction} placeholder={'enter new search tag'} onChange={e => { onChangeSearchFunction(e) }} />
     </div>
   </div>
 )
