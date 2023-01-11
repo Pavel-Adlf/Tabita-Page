@@ -1,0 +1,21 @@
+.footerLine, .footerLineFull {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 70%;
+    height: 2.5vh;
+    background-color: rgba(46, 45, 45, 0.3);
+}
+.footerLineFull {
+    width: 100%;
+}
+.footerText {
+    color: white;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    left: 50%;
+    font-family: 'Share Tech Mono', sans-serif;
+    text-decoration: none;
+    font-size: clamp(15px, 2vh, 25px);
+}

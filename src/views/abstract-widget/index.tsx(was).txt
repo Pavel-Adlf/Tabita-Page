@@ -1,0 +1,85 @@
+import {
+  createContext,
+  FunctionComponent,
+  MouseEventHandler,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import clsx from 'clsx'
+
+import styles from './styles.module.css'
+
+const widgetContext = createContext<HTMLDivElement | null>(null)
+
+interface WidgetContainerProps {}
+
+export const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
+  children
+}) => {
+  const containerRef = useRef<HTMLDivElement | null>(null)
+
+  return (
+    <div ref={containerRef}>
+      <widgetContext.Provider value={containerRef.current}>
+        {children}
+      </widgetContext.Provider>
+    </div>
+  )
+}
+
+interface WidgetInstanceProps {
+  initialPosition?: [number, number]
+  onMove?: (positions: [number, number]) => void
+  className?: string
+}
+
+export const WidgetInstance: FunctionComponent<WidgetInstanceProps> = ({
+  initialPosition = [0, 0],
+  onMove,
+  children,
+  className,
+}) => {
+  const [isMoving, setMoving] = useState<boolean>(false)
+  const [position, setPosition] = useState<[number, number]>(initialPosition)
+  useEffect(() => {
+    onMove?.(position)
+    console.log(onMove?.(position))
+  }, [position])
+
+  const contextValue = useContext(widgetContext)
+
+  const onMouseDown: MouseEventHandler<HTMLDivElement> = useCallback(event => {
+    console.log('down', event.clientX, event.clientY)
+    setMoving(true)
+  }, [])
+
+  const onMouseMove: MouseEventHandler<HTMLDivElement> = useCallback(event => {
+    console.log('move', event.clientX, event.clientY)
+    if (isMoving) {
+      setPosition([event.clientX, event.clientY])
+    }
+  }, [isMoving])
+
+  const onMouseUp: MouseEventHandler<HTMLDivElement> = useCallback(event => {
+    console.log('up', event.clientX, event.clientY)
+    setMoving(false)
+  }, [])
+
+  return (
+    <div
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      className={clsx(styles.instance, className)}
+      style={{
+        top: position[1],
+        left: position[0],
+      }}
+    >
+      {children}
+    </div>
+  )
+}

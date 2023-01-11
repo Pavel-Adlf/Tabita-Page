@@ -1,0 +1,76 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: black;
+  transition: filter 1s;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: black;
+}
+
+@keyframes transparentAppearance {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  min-width: 100%;
+  height: 100%;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  animation: transparentAppearance 0.5s;
+  opacity: 1;
+  filter: none;
+  transition: filter 1s;
+}
+.footerLineName {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 30%;
+  height: 2.5vh;
+  background-color: rgba(46, 45, 45, 0.3);
+}
+.footerAuthor, .footerBy {
+  color: white;
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+  right: 0%;
+  font-family: 'Share Tech Mono', sans-serif;
+  text-decoration: underline;
+  font-size: clamp(15px, 2vh, 25px);
+  margin-right: 1vw;
+}
+
+.footerBy {
+  text-decoration: none;
+}
+
+.footerGrid {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

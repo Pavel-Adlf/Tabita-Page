@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Lobster&family=Philosopher:wght@400;700&family=Rubik:wght@400;500;700&display=swap');
+#weatherModule {
+    /* position: absolute; */
+    /* max-width: 30%;
+    max-height: 20%; */
+    cursor: pointer;
+    color: white;
+    /* backdrop-filter: blur(10px); */
+    background-color: rgba(46, 45, 45, 0.2);
+    padding: 10px;
+    border-radius: 2px;
+}
+.textClass {
+    margin: 0px;
+    font-family: 'Share Tech Mono', sans-serif;
+    font-size: clamp(15px, 2vw, 25px);
+}
+.headerClass {
+    margin: 0px;
+    font-family: 'Lobster', sans-serif;    
+    font-size: clamp(20px, 5vw, 50px);
+}
